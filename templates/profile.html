@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Ecodrop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #27ae60;
+    }
+    .profile-item {
+      margin: 15px 0;
+      padding: 10px;
+      background: #f9f9f9;
+      border-left: 4px solid #27ae60;
+    }
+    .profile-item strong {
+      color: #333;
+    }
+    .profile-value {
+      font-size: 18px;
+      color: #27ae60;
+      margin-top: 5px;
+    }
+    .welcome-message {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .links {
+      margin-top: 30px;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .logout-link {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👤 My Profile</h1>
+    
+    <div class="welcome-message">
+      <strong>Welcome back, {{ profile.display_name|default:user.username }}!</strong> 🎉
+      <br>
+      You have <strong>{{ profile.total_eco_points }}</strong> eco points.
+    </div>
+
+    <div class="profile-item">
+      <strong>Username:</strong>
+      <div class="profile-value">{{ user.username }}</div>
+    </div>
+
+    <div class="profile-item">
+      <strong>Display Name:</strong>
+      <div class="profile-value">{{ profile.display_name|default:"Not set" }}</div>
+    </div>
+
+    <div class="profile-item">
+      <strong>Phone Number:</strong>
+      <div class="profile-value">{{ profile.phone_number|default:"Not set" }}</div>
+    </div>
+
+    <div class="profile-item">
+      <strong>Eco Points:</strong>
+      <div class="profile-value">{{ profile.total_eco_points }}</div>
+    </div>
+
+    <div class="profile-item">
+      <strong>Email:</strong>
+      <div class="profile-value">{{ user.email|default:"Not set" }}</div>
+    </div>
+
+    <div class="links">
+      <a href="/accounts/logout/">🚪 Logout</a>
+      <a href="/api/profile/">📱 API Profile</a>
+      <a href="/">🏠 Home</a>
+      <a class="logout-link" href="/accounts/password_change/">🔐 Change Password</a>
+    </div>
+  </div>
+</body>
+</html>

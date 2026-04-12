@@ -1,6 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    display_name = models.CharField(max_length=150, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
+    total_eco_points = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.display_name or self.user.username
+
 class SmartBin(models.Model):
     location = models.CharField(max_length=100)
     fullness_percentage = models.IntegerField(default=0)

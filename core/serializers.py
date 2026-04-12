@@ -1,6 +1,14 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import SmartBin, MaintenanceAlert, DepositLog
+from .models import SmartBin, MaintenanceAlert, UserProfile, DepositLog
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+
+    class Meta:
+        model = UserProfile
+        fields = ['username', 'display_name', 'phone_number', 'total_eco_points']
+        read_only_fields = ['total_eco_points']
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:

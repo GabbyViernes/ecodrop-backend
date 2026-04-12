@@ -1,13 +1,12 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import SmartBin
+from .models import SmartBin, MaintenanceAlert          
 
-# 1. Auth: Handles secure user registration
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'password']
-        extra_kwargs = {'password': {'write_only': True}} # Keeps passwords hidden
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = User.objects.create_user(
@@ -16,8 +15,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         return user
 
-# 2. Features: Transforms SmartBin data into JSON
 class SmartBinSerializer(serializers.ModelSerializer):
     class Meta:
         model = SmartBin
+        fields = '__all__'
+
+class MaintenanceAlertSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MaintenanceAlert
         fields = '__all__'

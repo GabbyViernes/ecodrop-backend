@@ -1,16 +1,16 @@
-from django.shortcuts import render
-
 from django.contrib.auth.models import User
 from rest_framework import generics, viewsets
-from .models import SmartBin
-from .serializers import RegisterSerializer, SmartBinSerializer
+from .models import SmartBin, MaintenanceAlert          
+from .serializers import RegisterSerializer, SmartBinSerializer, MaintenanceAlertSerializer  
 
-# Auth Endpoint: Logic for registering a user
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
-# Feature Endpoints: Automatically handles GET, POST, PUT, DELETE for bins
 class SmartBinViewSet(viewsets.ModelViewSet):
     queryset = SmartBin.objects.all()
     serializer_class = SmartBinSerializer
+
+class MaintenanceAlertViewSet(viewsets.ModelViewSet):
+    queryset = MaintenanceAlert.objects.all()
+    serializer_class = MaintenanceAlertSerializer

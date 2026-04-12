@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
 from rest_framework import generics, viewsets
-from .models import SmartBin, MaintenanceAlert          
-from .serializers import RegisterSerializer, SmartBinSerializer, MaintenanceAlertSerializer  
+from .models import SmartBin, MaintenanceAlert, DepositLog
+from .serializers import (
+    RegisterSerializer, SmartBinSerializer, 
+    MaintenanceAlertSerializer, DepositLogSerializer
+)
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -14,3 +17,7 @@ class SmartBinViewSet(viewsets.ModelViewSet):
 class MaintenanceAlertViewSet(viewsets.ModelViewSet):
     queryset = MaintenanceAlert.objects.all()
     serializer_class = MaintenanceAlertSerializer
+
+class DepositLogViewSet(viewsets.ModelViewSet):
+    queryset = DepositLog.objects.all().order_by('-timestamp')
+    serializer_class = DepositLogSerializer

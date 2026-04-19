@@ -5,7 +5,6 @@ SECRET_KEY = 'django-insecure-*&l51rhn3=*(&fp-@1*(h#tli9hz%a@4uog$vf7ut95e3iy)lh
 DEBUG = True
 ALLOWED_HOSTS = ["*"] # Changed to allow any host during development
 
-# 1. ADDED 'corsheaders' to Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,7 +18,6 @@ INSTALLED_APPS = [
     'core',
 ]
 
-# 2. ADDED 'CorsMiddleware' to the VERY TOP of Middleware
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # MUST BE AT THE TOP
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +71,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles' # Added for production static files handling
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

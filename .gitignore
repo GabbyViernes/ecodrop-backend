@@ -1,7 +1,28 @@
-venv/
-.venv/
-env/
+# Python bytecode (compiled files)
 __pycache__/
 *.py[cod]
-db.sqlite3
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / Build
+dist/
+build/
+staticfiles/
+
+# Environment Variables (Keep your secrets hidden!)
 .env
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# DATABASE OPTION:
+# If you want your local data (test users/items) to show up on Render,
+# leave the line below COMMENTED OUT with a #.
+# If you want a blank database on Render, remove the #.
+# db.sqlite3

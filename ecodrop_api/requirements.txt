@@ -1,0 +1,8 @@
+django
+fastapi
+uvicorn[standard]
+gunicorn
+whitenoise
+djangorestframework
+django-cors-headers
+httpie

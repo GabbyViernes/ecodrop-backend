@@ -6,3 +6,5 @@ whitenoise
 djangorestframework
 django-cors-headers
 httpie
+psycopg2-binary==2.9.9
+dj-database-url==url==2.1.0
